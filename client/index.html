@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Collaborative Canvas — Assignment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="topbar">
+        <div id="controls">
+            <input id="username" placeholder="Your name" />
+            <input id="color" type="color" value="#111111" />
+            <label>Size <input id="size" type="range" min="1" max="48" value="4" /></label>
+            <button id="brushBtn">Brush</button>
+            <button id="eraserBtn">Eraser</button>
+            <button id="undoBtn">Undo</button>
+            <button id="clearBtn">Clear (local)</button>
+        </div>
+        <div id="presenceBox">
+            <div><strong>Online:</strong></div>
+            <ul id="presenceList"></ul>
+        </div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <div id="footer">
+        <small>Open multiple tabs to test. Undo is global LIFO.</small>
+    </div>
+
+    <!-- Socket.io and main app -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

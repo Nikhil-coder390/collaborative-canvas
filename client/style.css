@@ -1,0 +1,70 @@
+/* client/style.css */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: system-ui, sans-serif;
+    background: #f5f7fb;
+}
+
+#topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    z-index: 10;
+}
+
+#controls>* {
+    margin-right: 8px;
+}
+
+#presenceBox {
+    display: flex;
+    align-items: center;
+}
+
+#presenceList {
+    list-style: none;
+    margin: 0;
+    padding: 0 8px;
+    display: flex;
+    gap: 8px;
+}
+
+#presenceList li {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #eef2ff;
+    font-size: 13px;
+}
+
+#canvas {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    width: 100%;
+    height: calc(100% - 80px);
+    touch-action: none;
+    /* important for pointer events on touch devices */
+    cursor: crosshair;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+    font-size: 13px;
+}
