@@ -59,14 +59,14 @@ class RoomManager {
     const opID = `${roomId}::${String(seq).padStart(6, '0')}`;
 
     // Create stamped op object
+    // Ensure the full payload (including tool type) is cloned
     const stamped = {
       seq,
       opID,
       clientId: socketId,
       type: opRaw.type,
-      payload: opRaw.payload || opRaw.payload === null ? opRaw.payload : opRaw, // flexible
+      payload: { ...opRaw.payload }, // preserve tool, color, points, etc.
       timestamp: Date.now(),
-      // active flag is meaningful for strokes; undone strokes will be marked false
       active: true,
     };
 

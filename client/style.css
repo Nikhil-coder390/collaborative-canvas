@@ -1,13 +1,23 @@
-/* client/style.css */
-body,
-html {
+/* ===== Collaborative Canvas — Modern UI ===== */
+
+/* Reset & base */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: system-ui, sans-serif;
-    background: #f5f7fb;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(145deg, #eef1f8, #f8fafc);
+    color: #222;
+    overflow: hidden;
 }
 
+/* Top toolbar (frosted glass look) */
 #topbar {
     position: fixed;
     top: 0;
@@ -15,27 +25,102 @@ html {
     right: 0;
     display: flex;
     justify-content: space-between;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    align-items: center;
+    padding: 10px 16px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
     z-index: 10;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-#controls>* {
-    margin-right: 8px;
+/* Controls layout */
+#controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
 }
 
+#controls input[type="text"],
+#controls input[type="color"],
+#controls input[type="range"],
+#controls button {
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+#controls input[type="text"] {
+    padding: 6px 10px;
+    min-width: 120px;
+    border: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+#controls input[type="color"] {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+#controls label {
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#controls input[type="range"] {
+    width: 100px;
+    accent-color: #6366f1;
+}
+
+#controls button {
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    background: #f9fafb;
+    color: #333;
+    border: 1px solid #e2e8f0;
+}
+
+#controls button:hover {
+    background: #f1f5f9;
+    transform: translateY(-1px);
+}
+
+#controls button.active {
+    background: #6366f1;
+    color: #fff;
+    border: 1px solid #4f46e5;
+}
+
+/* Presence panel */
 #presenceBox {
     display: flex;
     align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 4px 8px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 #presenceList {
     list-style: none;
     margin: 0;
-    padding: 0 8px;
+    padding: 0;
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 #presenceList li {
@@ -43,28 +128,59 @@ html {
     border-radius: 6px;
     background: #eef2ff;
     font-size: 13px;
+    color: #374151;
+    transition: background 0.2s;
 }
 
+#presenceList li:hover {
+    background: #e0e7ff;
+}
+
+/* Canvas area */
 #canvas {
     position: absolute;
-    top: 56px;
+    top: 64px;
     left: 0;
     right: 0;
-    bottom: 24px;
+    bottom: 36px;
     width: 100%;
-    height: calc(100% - 80px);
+    height: calc(100% - 100px);
     touch-action: none;
-    /* important for pointer events on touch devices */
     cursor: crosshair;
+    background: #f9fbff;
 }
 
+/* Footer */
 #footer {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.05);
     font-size: 13px;
+    text-align: center;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    #controls {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+        width: 100%;
+    }
+
+    #presenceBox {
+        margin-top: 8px;
+    }
 }
