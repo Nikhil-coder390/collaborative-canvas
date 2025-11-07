@@ -1,7 +1,7 @@
 // client/main.js
 
 // Connect to server (same origin)
-const socket = io();
+const socket = io("https://collaborative-canvas-juny.onrender.com");
 
 // Basic config
 const ROOM_ID = 'room1';
