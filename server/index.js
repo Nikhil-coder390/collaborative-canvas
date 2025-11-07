@@ -10,8 +10,10 @@ const server = http.createServer(app);
 
 // Configure socket.io
 const io = new Server(server, {
-  cors: { origin: "*" },
-  // pingInterval/pingTimeout can be tuned for reliability
+  cors: {
+    origin: "*", // Allow all origins (later restrict to your Vercel URL)
+    methods: ["GET", "POST"]
+  }
 });
 
 const rooms = new RoomManager();
